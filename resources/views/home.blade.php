@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    there sould be a logout button
                 </div>
             </div>
         </div>

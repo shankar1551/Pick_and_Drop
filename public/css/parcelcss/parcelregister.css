@@ -1,0 +1,85 @@
+/*utility class*/
+
+.btn 
+{
+  display: block;
+  width: 200px;
+  height: 35px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+}
+
+.ch1
+{
+  display: block;
+  padding: 0px;
+  margin: 40px auto;
+  text-align: center;
+  color: #fff;
+  font-size: 28px;
+
+}
+
+
+
+
+.form-container
+{
+  height: auto;
+  /*background-color:rgba(0, 123, 255,0.5);*/
+
+}
+
+
+.main 
+{
+  width: 60%;
+  padding: 20px;
+  margin: 0 auto;
+  /*text-align: center;*/
+  background: rgba(0, 123, 255,0.5);
+}
+
+.form-container .hell
+{
+  margin: 20px;
+  padding: 10px;
+  background: rgba(128, 128, 128, 0.1);
+}
+
+
+
+
+.form-container .hell label
+{
+  display: block;
+  color: #fff;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.form-container .hell input
+{
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+  height: 030px;
+  border-radius: 10px;
+  border: none;
+}
+
+.form-container .hell textarea
+{
+  width: auto;
+  height: 100px;
+  width: 100%;
+}
+
+
+.form-container .btn
+{
+
+  margin: 24px auto;
+
+}

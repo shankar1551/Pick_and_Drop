@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('shankar',function(){ return "shankar here"; });
+Route::resource('parcel', ParcelController::class);

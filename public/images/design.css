@@ -1,0 +1,61 @@
+body {
+  background-color: rgba(0, 0, 0, 0.856);
+  font-family: sans-serif;
+  padding: 15px;
+}
+label {
+  display: block;
+}
+
+input[type="email"],
+input[type="password"] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 15px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: rgb(0, 0, 0);
+  outline: 0;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.315);
+}
+
+.main {
+  width: 400px;
+  height: 450px;
+  margin: 60px auto;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.904);
+  box-shadow: 20px 20px 20px 20px;
+}
+.hell {
+  padding-top: 15px;
+}
+h2 {
+  padding-top: 20px;
+  text-align: center;
+  text-shadow: 1px 1px;
+}
+
+form {
+  text-align: center;
+}
+
+/* ------utility----- */
+
+button {
+  padding: 10px 10px;
+  margin: 10px 60px;
+  border-radius: 20px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.856);
+  color: #fff;
+  opacity: 0.9;
+  border: none;
+}
+
+button:hover {
+  opacity: 1;
+}
