@@ -92,7 +92,10 @@ class ParcelController extends Controller
      */
     public function show($id)
     {
-        //
+        // echo "viewing the parcel details by users and admin";
+        $parcel = Parcel::find(1);
+        // dd($parcel);
+        return view('parcel/show')->with('parcel',$parcel);
     }
 
     /**
@@ -128,4 +131,10 @@ class ParcelController extends Controller
     {
         //
     }
+
+    public function Status($id)
+    {
+        // return $id.'showing thhe status for the parcel';
+        return view('parcel.status');
+    } 
 }

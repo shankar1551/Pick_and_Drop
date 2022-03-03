@@ -35,6 +35,7 @@ class CreateParcelsTable extends Migration
             $table->string('pweight');
 
             $table->string('comment');
+            $table->string('assigned')->default('null');
             
 
 

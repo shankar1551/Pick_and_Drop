@@ -1,0 +1,5 @@
+                            var x=function Hide(e)
+                            {
+                                console.log(e);
+                            }
+                            console.log(x);
