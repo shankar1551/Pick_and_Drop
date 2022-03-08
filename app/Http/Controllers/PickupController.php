@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class PickupController extends Controller
 {
+   
+
+    public function Home()
+    {
+        //state where clause to selected the pickup one
+        $parcels = DB::table('parcels')->take(5)->where('assigned','null')->get();
+
+        return view('pickup.firstpage')->with('data',$parcels);;
+    }
+
     public function Index()
     {
         //fetching the first five or n parcel details and asigining to the delivery man who logged in     

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Parcel;
+use Illuminate\Support\Facades\DB;
+
 
 class ParcelController extends Controller
 {
@@ -38,7 +40,7 @@ class ParcelController extends Controller
     {
         $validated = $request->validate([
             'sname' => 'required|max:40',
-            'sadd' => 'required',
+            'sadd' => 'required|min:20',
             'snumber'=>'required',
             'lat' =>'required',
             'lng' =>'required',
@@ -60,7 +62,7 @@ class ParcelController extends Controller
 
 
         $p = new Parcel;
-        // dd($p);
+        
         $p->sname = $request->sname;
         $p->sadd = $request->sadd;
         $p->snumber=$request->snumber;
@@ -79,7 +81,24 @@ class ParcelController extends Controller
         $p->pwidth=$request->pwidth;
         $p->comment = $request->comment;
         $p->save();
-        dd($p);
+        // dd($p->id);
+        $request->session()->flash('msg','Congratulations the Pickup Request has been Received. Your UID is:     ' .$p->id.'                                                                                         Plese Keep the UID for future Refrence and Treaking of the Parcel');
+
+
+$parcels = DB::table('parcels')->take(5)->get();
+// $orders = DB::DB::table('parcels')->where('assigned','null')->get();        
+// dd(gettype($parcels));
+// if($parcels==null)
+// {
+//     echo 'empty';
+//     dd($parcel);
+// }
+// if($parcels!=null)
+// {
+//     echo 'not empty';
+//     dd($parcels);
+// }
+return view('home')->with('items',$parcels);
 
 
     }
@@ -132,9 +151,26 @@ class ParcelController extends Controller
         //
     }
 
-    public function Status($id)
+    public function Status(Request $request)
     {
         // return $id.'showing thhe status for the parcel';
-        return view('parcel.status');
+
+        // dd($request);
+
+        $parcel = Parcel::find($request->id);
+        if($parcel==null)
+        {
+                  return view('parcel.status')->with('parcel','null')->with('id',$request->id);
+        }
+        return view('parcel.status')->with('parcel',$parcel)->with('id',$request->id);
+    }
+
+    public function View($id)
+    {
+        // echo $id;
+        $parcel = Parcel::find($id);
+        
+
+        return view('Viewparcel')->with('item',$parcel);
     } 
 }

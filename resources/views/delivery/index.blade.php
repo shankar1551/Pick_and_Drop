@@ -5,39 +5,63 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Index page of thhe delivery man list of deliveries to made is presented here <br>Login is necessary </div>
+                <div class="card-header"> <h3 class="text-dark">List OF Delevery to be made </h3> <br> </div>
+
+               
+                <div class="jumbotron bg-light">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            Employee Id: 1
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            Employee Name: Hari Bahadur Ghimire    
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+
 
                 <div class="card-body">
                     
                    @foreach($path as $item)
                    
 
-                       {{$item->id}}
+                       {{-- {{$item->id}} --}}
 
-                       <div class="single" id='single{{$item->id}}' style="border: 5px solid black;">
-                           <h1>Receiver</h1>
-                           {{$item->rname}}
+                       <div class="single" id='single{{$item->id}}'>
+                           <h4 class="class-title text-dark">Receiver Name</h4>
+                           <h5 class="class-subtitle mb-2">{{$item->rname}}</h5>
 
-                           <h1>Mobile</h1>
-                           {{$item->rnumber}}
+                           <h4 class="class-title text-dark">Receiver Mobile </h4>
+                           <h5 class="class-subtitle mb-4">{{$item->rnumber}}</h5>
+                           
 
-                           <h1>Address</h1>
-                           {{$item->radd}}
+                           <h4 class=" class-title text-dark">Receiver Address</h4>
+                           <h5 class="class-subtitle mb-5 ">{{$item->radd}}</h5>
+                           {{-- {{$item->radd}} --}}
 
-                           <div class="map-div">
-                               location map 
-                           </div>
+                           
 
-                           <button onclick="hideDiv({{$item->id}})" class="{{$item->id}}"  id='hide'> Delivered</button>
-                           <button >Delivery Failed</button>
+                           <button onclick="hideDiv(event,{{$item->id}})" class="{{$item->id}} btn btn-primary"  id='hide'> Delivered</button>
+                           <button onclick="hideDiv(event,{{$item->id}})" class="{{$item->id}} btn btn-primary"  id='hide' >Delivery Failed</button>
                            <br><br><br>
                        </div>
-                        
-                            
 
+                       <hr><hr class="mb-4">
+                        
                    @endforeach
                 </div>
             </div>
+
+
+               
+
+            <div class="col-lg-12">
+                <a href=" {{ route('delivery_home') }} " class="btn btn-primary mb-5">Delivery Completed Go to Home Page</a>
+            </div>
+
         </div>
     </div>
 </div>

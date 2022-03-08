@@ -38,7 +38,7 @@
   padding: 20px;
   margin: 0 auto;
   /*text-align: center;*/
-  background: rgba(0, 123, 255,0.5);
+  /*background: rgba(0, 123, 255,0.5);*/
 }
 
 .form-container .hell
@@ -68,14 +68,14 @@
   border-radius: 10px;
   border: none;
 }
-
+/*
 .form-container .hell textarea
 {
   width: auto;
   height: 100px;
   width: 100%;
 }
-
+*/
 
 .form-container .btn
 {

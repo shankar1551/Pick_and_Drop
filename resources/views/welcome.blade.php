@@ -10,67 +10,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ URL::asset('css/shop.css') }}" />
         <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}" />
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        
+       
     </head>
     <body>
-
-      {{-- nanvbar from the Anjali file --}}
-
-
-
-
 
 
       <div class="head sticky-top">
@@ -89,37 +32,37 @@
                      <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="" class="nav-link slide p-3">Home</a>
+                            <a href="" class="nav-link active slide p-3 ">Home</a>
                         </li>
                       <li class="nav-item">
-                        <a href="" class="nav-link slide p-3">About Us</a>
+                        <a href="" class="nav-link active slide p-3">About Us</a>
                       </li>
 
 
                       <li class="nav-item">
-                        <a href="" class="nav-link slide p-3">Services</a>
+                        <a href="" class="nav-link active slide p-3">Services</a>
 
                       </li>
 
                       <li class="nav-item">
-                        <a href="#contact_me" class="nav-link slide p-3">Contact Us</a>
+                        <a href="#contact_me" class="nav-link active slide p-3">Contact Us</a>
                       </li>
                       @if (Route::has('login'))
 
                               @auth
                                 <li class="nav-item">
-                                  <a href="{{ url('/home') }}" class="nav-link slide p-3">Shankar POkhrel
+                                  <a href="{{ url('/home') }}" class="nav-link active slide p-3">Shankar POkhrel
                                 </li>
                               @else
                                 <li class="nav-item">
-                                  <a href="{{ route('login') }}" class="nav-link slide p-3">User Login</a>
+                                  <a href="{{ route('login') }}" class="nav-link active slide p-3">User Login</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="{{ route('login') }}" class="nav-link slide p-3">Employee Login</a>
+                                  <a href="{{ route('login') }}" class="nav-link active slide p-3">Employee Login</a>
                                 </li>
                                   @if (Route::has('register'))
                                     <li class="nav-item">
-                                      <a href="{{ route('register') }}" class="nav-link slide p-3">Register</a>
+                                      <a href="{{ route('register') }}" class="nav-link active slide p-3">Register</a>
                                     </li>
                                   @endif
                               @endauth
@@ -134,13 +77,13 @@
           </div>
 
 
-          {{--  ------------------------Home page main view----------- --}}
+          
 
       <div class="container-fluid" id="a1">
         <div class="row py-3">
           <div class="col-md-5 mt-5">
             <h1 class="mb-5" id="hell">Send Your Parcel From Your Doorstep</h1>
-            <p id="par1">
+            <p id="par1" >
 
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis
               nobis numquam sed expedita rerum? Facilis iusto amet rem, eius minus
@@ -156,8 +99,8 @@
         </div>
         <div class="row py-3" id="but">
           <div class="col-md-6">
-            <button id="order">Request Pickup</button>
-            <button id="track">Track Your Parcel</button>
+            <a href="#search" class="btn btn-secondary">Search Parcel</a>
+            <a href="#" class="btn btn-secondary">Request Pickup</a>
           </div>
         </div>
       </div>
@@ -169,10 +112,8 @@
               <div class="card" id="card1">
                 <h3 id="why">Why Choose Us?</h3>
                 <div class="card-body">
-                  <p class="card-title" id="lorem1">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, inventore? Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
-                    ipsum dolor sit amet consectetur adipisicing elit. Qui,
-                    officiis.
+                  <p class="text-dark lead " style="font-size: 22px;" id="lorem1">
+                    We provide you the best service for sending courier in Butwal. Best in class And No Compromise in Service  
                   </p>
                   <i class="fas fa-arrow-circle-right"></i>
                 </div>
@@ -212,9 +153,38 @@
         </div>
       </div>
 
+      
+      <div class="row" id="search">
+        <div class="col-lg-11 col-sm-11 m-auto">
+              <div class="container-fluid">
+        
+            <div class="col-lg-12 col-md-10 mt-5 pt-5 pb-5 bg-light">
+                      <p class="text-dark ">Quickly check the status of your parcel </p>
+                        <h4><p class="text-primary">Check  Parcel Status By the UID:</p></h4>
+                        <form class="form-inline mt-3" action="{{route('status')}}" method="POST">
+                            {{csrf_field()}}
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search User" aria-label="Search" name="id">
+                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                        </form>              
+            </div>
+
+      </div>
+        </div>
+      </div>
+      
+
 {{-- -------------------home page main view end---------- --}}
 
-
+   {{--  <div class="col-lg-12 col-md-10 mt-5 pt-5 pb-5 bg-light">
+            
+                        <h4><p class="text-primary">Check  Parcel Status By the UID:</p></h4>
+                        <form class="form-inline mt-3" action="{{route('status')}}" method="POST">
+                            {{csrf_field()}}
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search User" aria-label="Search" name="id">
+                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                        </form>              
+    </div> --}}
+  
 
     </body>
 </html>

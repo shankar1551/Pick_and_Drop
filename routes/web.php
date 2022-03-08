@@ -26,18 +26,32 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //admin all routes
 Route::resource('admin', AdminController::class);
-Route::get('admin/parcel/view', 'AdminController@ViewParcel');
-Route::get('admin/parcel/{id}', 'AdminController@SearchParcel');
-Route::get('admin/users/view','AdminController@ViewUsers');
-Route::get('admin/users/{id}','AdminController@ViewSingleUser');
+Route::get('admin/parcel/view', 'AdminController@ViewParcel')->name('admin_parcel_view');
+Route::get('admin/parcel/{id}', 'AdminController@SearchParcel')->name('admin_parcel_search');
+Route::get('admin/users/view','AdminController@ViewUsers')->name('admin_users_view');
+Route::get('admin/users/{id}','AdminController@ViewSingleUser')->name('admin_users_search');
+
 
 
 
 //parcel all routes
-Route::resource('parcel', ParcelController::class);
-Route::get('parcel/status/{id}','ParcelController@Status');
+Route::resource('parcel', ParcelController::class)->middleware('auth');
+Route::post('parcel/status/','ParcelController@Status')->name('status');
+Route::get('parcel/view/{id}','ParcelController@View')->name('parcel_view');
 
 
-Route::get('delivery','DeliveryController@index')->name('deliery');
 
-Route::get('pickup','PickupController@index')->name('pickup');
+//routes for the pick and delivery man and pickcup man
+Route::get('delivery','DeliveryController@Home')->name('delivery_home');
+Route::get('delivery/index','DeliveryController@index')->name('delivery_index');
+
+Route::get('pickup','PickupController@Home')->name('pickup_home');
+
+Route::get('pickup/index','PickupController@Index')->name('pickup_index');
+
+
+
+Route::get('/about', function()
+{
+    return view('/about');
+})->name('about');

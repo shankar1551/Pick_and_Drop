@@ -10,6 +10,13 @@ class DeliveryController extends Controller
 {
     //
 
+    
+    public function Home()
+    {
+        $parcels = DB::table('parcels')->take(5)->where('assigned','null')->get();
+        return view('delivery.firstpage')->with('data',$parcels);
+    }
+
     public function index()
     {
         //fetching the first five or n parcel details and asigining to the delivery man who logged in

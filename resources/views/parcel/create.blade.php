@@ -1,18 +1,104 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Form Stylng</title>
+    <title>Create Parcel</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/parcelcss/parcelregister.css') }}" />
+     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/send/public/css/shop.css" />
+    <script    src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"     data-auto-replace-svg="nest"  >   </script>
+    <script    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"      crossorigin="anonymous"    ></script>
+    <script    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"      crossorigin="anonymous"  ></script>
+    <script    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"      crossorigin="anonymous"    ></script>
+    <script src="{{ asset('css/shop.js') }}"></script>
     <style type="text/css">
           #map{ width: 100%; height: 300px; }
     </style>
-    {{-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script> --}}
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
   </head>
 
   <body>
-    <div class="form-container">
+
+
+    <div class="head sticky-top">
+      <div class="header">
+        <nav class="navbar navbar-dark navbar-expand-md">
+          <div class="container-fluid" id="ere">
+            <a href="#" class="navbar-brand" id="eren"><i class="fab fa-autoprefixer"></i></a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navmenu"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+               <div class="collapse navbar-collapse" id="navmenu">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      <a href="" class="nav-link active  slide p-3">Home</a>
+                  </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link active slide p-3">About Us</a>
+                </li>
+
+
+                <li class="nav-item">
+                  <a href="" class="nav-link active slide p-3">Services</a>
+
+                </li>
+
+                <li class="nav-item">
+                  <a href="#contact_me" class="nav-link active slide p-3">Contact Us</a>
+                </li>
+
+                @if (Route::has('login'))
+                        @auth
+                          
+                           <li class="nav-item">
+                               
+                                    <a class="nav-link active slide p-3" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" >
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                
+                           </li>
+                           <li class="nav-item">
+                            <a href="{{ url('/home') }}" class="nav-link active slide p-3">Shankar POkhrel</a>
+                          </li> 
+                        @else
+                          <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link active slide p-3">User Login</a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link active slide p-3">Employee Login</a>
+                          </li>
+                            @if (Route::has('register'))
+                              <li class="nav-item">
+                                <a href="{{ route('register') }}" class="nav-link active slide p-3">Register</a>
+                              </li>
+                            @endif
+                        @endauth
+
+                @endif
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+
+    <div class="form-container ">
       <div class="main">
-      <h2 class="ch1"><u>Request For Parcel PickUp</u></h2>
+      <h2 class="ch1"><u class="text-dark">Request For Parcel Pick-Up</u></h2>
 
       <div class="error div">    
           @if ($errors->any())
@@ -31,13 +117,13 @@
       <form method="POST" action="{{ route('parcel.store') }}">
           @csrf
 
-        <div class="hell">
-          <label for="sname">Sender Name</label>
-          <input type="text" id="sname" name="sname" placeholder="Name" value="shankar" />
+        <div class="hell form-group">
+          <label for="sname" class="text-dark">Sender Name</label>
+          <input type="text" class="form-control" id="sname" name="sname" placeholder="Name" value="shankar" />
         </div>
 
         <div class="hell">
-          <label for="address">Senders's Address</label>
+          <label for="address" class="text-dark">Senders's Address</label>
           <input type="text" id="sadd" name="sadd" placeholder="Address" value="shankar add"/>
           <div class="cordinate-div">
               <h1>Select a location!</h1>
@@ -64,17 +150,17 @@
         </div>
 
         <div class="hell">
-          <label for="snumber">Sender Contact No.</label>
+          <label for="snumber" class="text-dark">Sender Contact No.</label>
           <input type="number" id="snum" name="snumber" placeholder="Contact No." value="789654" />
         </div>
 
         <div class="hell">
-          <label for="rname">Receiver Name</label>
+          <label for="rname" class="text-dark">Receiver Name</label>
           <input type="text" id="rname" name="rname" placeholder="Name" value="r shankar" />
         </div>
 
         <div class="hell">
-          <label for="address">Receiver's Address</label>
+          <label for="address" class="text-dark">Receiver's Address</label>
           <input type="text" id="radd" name="radd" placeholder="Address" value="raddress" />
           <div class="cordinate-div">
             
@@ -82,41 +168,41 @@
         </div>
 
         <div class="hell">
-          <label for="rnumber">Receiver Mobile No.</label>
+          <label for="rnumber" class="text-dark">Receiver Mobile No.</label>
           <input type="number" id="rnum" name="rnumber" placeholder="Contact No." value="123456" />
         </div>
 
         <div class="hell">
-          <label for="weight">Parcel Weight</label>
+          <label for="weight" class="text-dark">Parcel Weight</label>
           <input  type="number"  id="pweight" name="pweight" placeholder="Weight" value="2" />
         </div>
 
         <div class="hell">
-          <label for="number">Parcel's Dimension</label>
+          <label for="number" class="text-dark">Parcel's Dimension(in centimeter)</label>
           
-          <label for="number">length</label>
+          <label for="number" class="text-dark">length</label>
           <input type="number" id="plength" name="plength"  placeholder="Length" value="1" />
 
-          <label for="number">width</label>
+          <label for="number" class="text-dark">width</label>
           <input type="number" id="pwidth" name="pwidth" placeholder="width" value="12" />
 
-          <label for="number">height</label>
+          <label for="number" class="text-dark">height</label>
           <input   type="number" id="pheight"  name="pheight" placeholder="Height" value="12" />
         </div>
 
         <div class="hell">
-          <label>Comment If Any</label>
+          <label class="text-dark">Comment If Any</label>
           <textarea name="comment" class="form-control" > Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Commodi, at dolore, consectetur quam rem sit dicta laborum in nisi nesciunt totam, dolores. Perferendis ut non, reprehenderit debitis, similique illum aliquid. </textarea>
         </div>
 
-        <input type="submit" class="btn">
+        <input type="submit" class="btn btn-primary ml-5">
       </form>
       {{-- ====Form end=== --}}
       </div>  
     </div>
     
   </body>
-{{-- 
+
      <script type="text/javascript">
             
 
@@ -213,6 +299,6 @@
                         }
 
                     })
-</script> --}}
+</script>
 
 </html>
