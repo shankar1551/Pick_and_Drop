@@ -46,7 +46,7 @@ class CreateParcelsTable extends Migration
             // $table->string('drop_add');
             $table->string('sent_by')->default('annomous');
             // $table->string('receiver');
-            $table->string('status')->default('topick');
+            $table->string('status')->default('To be picked');
 
         });
     }

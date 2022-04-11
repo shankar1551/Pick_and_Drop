@@ -37,21 +37,12 @@
                <div class="collapse navbar-collapse" id="navmenu">
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                      <a href="" class="nav-link active  slide p-3">Home</a>
+                      <a href=" {{route('home')}} " class="nav-link active  slide p-3">Home</a>
                   </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link active slide p-3">About Us</a>
+                  <a href="{{ route('about') }}" class="nav-link active slide p-3">About Us</a>
                 </li>
 
-
-                <li class="nav-item">
-                  <a href="" class="nav-link active slide p-3">Services</a>
-
-                </li>
-
-                <li class="nav-item">
-                  <a href="#contact_me" class="nav-link active slide p-3">Contact Us</a>
-                </li>
 
                 @if (Route::has('login'))
                         @auth
@@ -60,7 +51,7 @@
                                
                                     <a class="nav-link active slide p-3" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" >
+                                                     document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
@@ -70,7 +61,7 @@
                                 
                            </li>
                            <li class="nav-item">
-                            <a href="{{ url('/home') }}" class="nav-link active slide p-3">Shankar POkhrel</a>
+                            <a href="{{ url('/home') }}" class="nav-link active slide p-3">{{Auth::user()->name}}</a>
                           </li> 
                         @else
                           <li class="nav-item">

@@ -6,13 +6,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
            
-            here the home page for the user needs to be created 
-            should have his pickup history
-            should have his search options
-            and other we will think about it
-            link to send new parcel
-            contact Us Page link
-
            
         @if(session()->get('msg')!=null)
             <div class="bg-info p-5">
@@ -30,8 +23,18 @@
 
 
         </div>
-        <div class="col-md-8 col-sm-8">
-            <h4 class="lead">My previous Requests</h4>
+
+        <div class="col-md-8 mt-4 pt-4 mb-5">
+            
+            <h2 class="text-dark">
+                <h3 class="text-dark"> Pickup Request Order</h3>
+                <a href="{{route('parcel.create')}}" class="btn btn-primary">Request Pickup</a>
+            </h2>
+
+        </div>    
+        {{-- <hr> --}}
+        <div class="col-md-8 col-sm-8 mt-5">
+            <h2 class="text-dark pb-2 ">My previous Requests</h2>
            <table class="table">
               <thead class="thead-dark">
                 <tr>
@@ -40,7 +43,7 @@
                   <th scope="col">Delivery Address</th>
                   <th scope="col">Receiver Number</th>
                   <th scope="col">View</th>
-                  <th scope="col">Delete</th>
+                  {{-- <th scope="col">Delete</th> --}}
 
                 </tr>
               </thead>
@@ -52,8 +55,8 @@
                   <td>{{$item->created_at}}</td>
                   <td>{{$item->radd}}</td>
                   <td>{{$item->rnumber}}</td>
-                  <td><a href="#" class="btn btn-primary">View</a></td>
-                  <td><a href="" class="btn btn-primary">Delete</a></td>
+                  <td><a href="{{ route('parcel_view',$item->id) }}" class="btn btn-primary">View</a></td>
+                  {{-- <td><a href="" class="btn btn-primary">Delete From Histor</a></td> --}}
                 </tr>
                 @endforeach
             @else
@@ -83,7 +86,7 @@
         <div class="col-md-8 mt-4 pt-4">
             
             <h2 class="text-dark">
-                New Pickup Request Order
+                <h3 class="text-dark"> Pickup Request Order</h3>
                 <a href="{{route('parcel.create')}}" class="btn btn-primary">Request Pickup</a>
             </h2>
 

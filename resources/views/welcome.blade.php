@@ -35,24 +35,40 @@
                             <a href="" class="nav-link active slide p-3 ">Home</a>
                         </li>
                       <li class="nav-item">
-                        <a href="" class="nav-link active slide p-3">About Us</a>
+                        <a href="{{route('about')}}" class="nav-link active slide p-3">About Us</a>
                       </li>
 
 
-                      <li class="nav-item">
+                      {{-- <li class="nav-item">
                         <a href="" class="nav-link active slide p-3">Services</a>
 
-                      </li>
+                      </li> --}}
 
-                      <li class="nav-item">
+                      {{-- <li class="nav-item">
                         <a href="#contact_me" class="nav-link active slide p-3">Contact Us</a>
-                      </li>
+                      </li> --}}
                       @if (Route::has('login'))
 
                               @auth
+                                
+
+                                <li class="nav-item">
+                                   
+                                        <a class="nav-link active slide p-3" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    
+                               </li>
                                 <li class="nav-item">
                                   <a href="{{ url('/home') }}" class="nav-link active slide p-3">Shankar POkhrel
                                 </li>
+
                               @else
                                 <li class="nav-item">
                                   <a href="{{ route('login') }}" class="nav-link active slide p-3">User Login</a>
@@ -85,9 +101,7 @@
             <h1 class="mb-5" id="hell">Send Your Parcel From Your Doorstep</h1>
             <p id="par1" >
 
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis
-              nobis numquam sed expedita rerum? Facilis iusto amet rem, eius minus
-              possimus accusamus earum id nesciunt?
+              Choose Us to Send and Receive your Parcel. We provide best services in Rupandehi for Management of the parcel.
             </p>
           </div>
 
@@ -100,7 +114,7 @@
         <div class="row py-3" id="but">
           <div class="col-md-6">
             <a href="#search" class="btn btn-secondary">Search Parcel</a>
-            <a href="#" class="btn btn-secondary">Request Pickup</a>
+            <a href="{{route('login') }}" class="btn btn-secondary">Request Pickup</a>
           </div>
         </div>
       </div>
@@ -154,8 +168,8 @@
       </div>
 
       
-      <div class="row" id="search">
-        <div class="col-lg-11 col-sm-11 m-auto">
+      <div class="row mb-5 pb-5" id="search">
+        <div class="col-lg-11 col-sm-11 m-auto pt-5">
               <div class="container-fluid">
         
             <div class="col-lg-12 col-md-10 mt-5 pt-5 pb-5 bg-light">
@@ -163,7 +177,7 @@
                         <h4><p class="text-primary">Check  Parcel Status By the UID:</p></h4>
                         <form class="form-inline mt-3" action="{{route('status')}}" method="POST">
                             {{csrf_field()}}
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search User" aria-label="Search" name="id">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search Parcel" aria-label="Search" name="id">
                             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                         </form>              
             </div>

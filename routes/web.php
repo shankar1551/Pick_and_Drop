@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+// use App\Http\Middleware\RoleChecker;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,10 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('role');
 // Route::get('shankar',function(){ return "shankar here"; });
 
-
+Route::get('/checkRole','HomeController@index')->name('Rhome');
 
 //admin all routes
 Route::resource('admin', AdminController::class);
@@ -35,19 +35,18 @@ Route::get('admin/users/{id}','AdminController@ViewSingleUser')->name('admin_use
 
 
 //parcel all routes
-Route::resource('parcel', ParcelController::class)->middleware('auth');
-Route::post('parcel/status/','ParcelController@Status')->name('status');
-Route::get('parcel/view/{id}','ParcelController@View')->name('parcel_view');
+Route::resource('/parcel', ParcelController::class);
+Route::post('/parcel/status/','ParcelController@Status')->name('status');
+Route::get('/parcel/view/{id}','ParcelController@View')->name('parcel_view');
 
 
 
 //routes for the pick and delivery man and pickcup man
-Route::get('delivery','DeliveryController@Home')->name('delivery_home');
-Route::get('delivery/index','DeliveryController@index')->name('delivery_index');
+Route::get('/delivery','DeliveryController@Home')->name('delivery_home');
+Route::get('/delivery/index','DeliveryController@index')->name('delivery_index');
 
-Route::get('pickup','PickupController@Home')->name('pickup_home');
-
-Route::get('pickup/index','PickupController@Index')->name('pickup_index');
+Route::get('/pickup','PickupController@Home')->name('pickup_home');
+Route::get('/pickup/index','PickupController@Index')->name('pickup_index');
 
 
 

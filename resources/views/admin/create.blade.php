@@ -46,6 +46,7 @@
                                 <select class="form-control" name="role">
                                   <option value="admin">Admin</option>
                                   <option value="delivery_man"  selected>Delivery man</option>
+                                  <option value="pickup_man" >Pickcup man</option>
                                   <option value="manager">Mananger</option>
                                 </select>
                             </div>
@@ -97,7 +98,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    Register New User
                                 </button>
                             </div>
                         </div>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
+use App\Parcel;
 use Illuminate\Support\Facades\Hash;
 // use App\User;
 
@@ -16,7 +18,20 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+
+        // $totalusers = User::get();
+        // dd();
+        $userCount = User::count();
+
+        $parcelCount = parcel::where('status','topick')->count();
+        // $user = DB::table('users')->where('name', 'John')->first();
+        
+        $NormalUser = DB::table('users')->where('role', 'user')->count();
+        // dd($NormalUser);
+        $employee = $userCount-$NormalUser;
+
+
+        return view('admin.index')->with('msg','')->with('usercount',$userCount)->with('parcelCount',$parcelCount)->with('employee',$employee);
     }
 
     /**
@@ -60,7 +75,18 @@ class AdminController extends Controller
         ]);
 
 
-        return redirect()->route('admin.index');
+        // return view('admin.index')->with('msg','User Addes Successfully');
+        $userCount = User::count();
+
+        $parcelCount = parcel::where('status','topick')->count();
+        // $user = DB::table('users')->where('name', 'John')->first();
+        
+        $NormalUser = DB::table('users')->where('role', 'user')->count();
+        // dd($NormalUser);
+        $employee = $userCount-$NormalUser;
+
+
+        return view('admin.index')->with('msg','User Addes Successfully')->with('usercount',$userCount)->with('parcelCount',$parcelCount)->with('employee',$employee);
     }
 
     /**
@@ -128,7 +154,8 @@ class AdminController extends Controller
     {
         //list the whole package
         // whole list of the parcels to be shown
-        return view('admin.viewParcel');
+        $parcels = DB::table('parcels')->take(8)->get();
+        return view('admin.viewParcel')->with('parcels',$parcels);
 
     }
 
@@ -136,7 +163,11 @@ class AdminController extends Controller
 // ===========controllers for the Users=======
     public function ViewUsers()
     {
-        return view('admin.viewUsers');
+       
+
+        $employee = DB::table('users')->get();
+        // dd($employee);
+        return view('admin.viewUsers')->with('employee',$employee);
     }
 
 

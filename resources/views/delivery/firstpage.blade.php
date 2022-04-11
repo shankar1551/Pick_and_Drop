@@ -41,7 +41,7 @@
 
                 <div class="card">
                   <div class="card-header">
-                    Featured
+                    
                   </div>
                   <div class="card-body">
                     <h5 class="card-title">Welcome @auth
@@ -61,6 +61,8 @@
                             </tr>
                             </thead>
                             <tbody>
+                          {{-- {{dd(count($data))}} --}}
+                          @if(count($data)>=1)
                             @foreach($data as $item)
                             <tr>
                                 <td >1</td>
@@ -69,6 +71,13 @@
                                 <td> {{$item->rnumber}} </td>
                             </tr>
                             @endforeach
+                        @else
+
+                        <tr>
+                            <td colspan="4">No Delevery left</td>
+                        </tr>
+
+                        @endif
                             
                             </tbody>
                             </table>

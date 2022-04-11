@@ -3,10 +3,12 @@
 @section('content')
 
 
- <div class="about-section">
+ <div class="about-section" style="align-content: center;">
   <h1>About Us Page</h1>
-  <p>Remember Us to send your parcel to your loved ones in efficient manner.</p>
-  <p>Resize the browser window to see that this page is responsive by the way.</p>
+  <p>Remember Us to send your parcel to your loved 
+    We Are Number One Currior Company in Butwal.
+  </p>
+  <p></p>
 </div>
 
 <h2 style="text-align:center">Our Team</h2>
@@ -56,23 +58,7 @@
 
 
       
-      <div class="row">
-        <div class="col-lg-11 col-sm-11 m-auto">
-              <div class="container-fluid">
-        
-            <div class="col-lg-12 col-md-10 mt-5 pt-5 pb-5 bg-light">
-                      <p class="text-dark ">Quickly check the status of your parcel </p>
-                        <h4><p class="text-primary">Check  Parcel Status By the UID:</p></h4>
-                        <form class="form-inline mt-3" action="{{route('status')}}" method="POST">
-                            {{csrf_field()}}
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search User" aria-label="Search" name="id">
-                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                        </form>              
-            </div>
-
-      </div>
-        </div>
-      </div>
+      
 
 
 
